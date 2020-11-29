@@ -1,24 +1,24 @@
 # PingPong
 
-It's my first [Kivy](https://kivy.org) program. 
+*Pong* is my first pyhton program/game based on [Kivy](https://kivy.org). 
 
 
 ![PingPong](pong.png)
 
 # My Experience
 
-- It's my first repository on kivy/python based program.
+- My first repository on kivy/python based program.
 
 - First porgram with mouse control rather than keys.
 
-- Capable of running in Android.
+- Capable of running with touchscreen.
 
 # Future Objectives
 
-- I'm goin to convert it in **apk**.
+- To convert it into **apk** for Android.
 
-- Going to add more levels and fuctionality for fun.
+- To add more levels and fuctionality.
 
 - Improvement in UI.
 
-Although it was fun and easy to learn.
+It was fun getting started with Kivy.
