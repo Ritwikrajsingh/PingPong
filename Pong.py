@@ -5,12 +5,18 @@ from kivy.vector import Vector
 from kivy.clock import Clock 
 from random import randint
 from kivy.config import Config
+from kivy.core.audio import SoundLoader
 
 #icon
 Config.set('kivy','window_icon','icon.png')
 
 #increase the speed of ball
 game_level = 5
+
+#SFX
+bgm = SoundLoader.load('ball_hit.wav')
+miss = SoundLoader.load('miss.wav')
+
 
 
 class PongPaddle(Widget):
@@ -19,6 +25,7 @@ class PongPaddle(Widget):
 	def bounce_ball(self, ball):
 
 		 if self.collide_widget(ball):
+		 	bgm.play()
 		 	ball.velocity_x *= -1 #comment it to run lower code
 # to increase the speed of ball on each collision with paddle uncomment lower line
 			#ball.velocity_x *= -1.1
@@ -59,11 +66,13 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 		if self.ball.x < 0:
 			self.ball.velocity_x *= -1
 			self.right_player.score += 1
+			miss.play()
 
 		# bounce off right
 		if self.ball.x > self.width - 15:
 			self.ball.velocity_x *= -1
 			self.left_player.score += 1
+			miss.play()
 
 		#idk it works or not, but it's to prevent ball moving along y axis in a straight line loop
 		#if self.ball.velocity == Vector(self.center_x, game_level):
@@ -97,4 +106,4 @@ class PongApp(App):	# Building the kivy App
 
 		return game
 
-PongApp().run() 
+PongApp().run()
