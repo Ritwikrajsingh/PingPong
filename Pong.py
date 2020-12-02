@@ -65,6 +65,10 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 			self.ball.velocity_x *= -1
 			self.left_player.score += 1
 
+		#idk it works or not, but it's to prevent ball moving along y axis in a straight line loop
+		#if self.ball.velocity == Vector(self.center_x, game_level):
+		#	PongApp().run()
+
 		# scoreboard updation
 		self.left_player.bounce_ball(self.ball)
 		self.right_player.bounce_ball(self.ball)
