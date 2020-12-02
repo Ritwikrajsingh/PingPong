@@ -6,9 +6,12 @@ from kivy.clock import Clock
 from random import randint
 from kivy.config import Config
 
+#icon
 Config.set('kivy','window_icon','icon.png')
 
-game_level = 4
+#increase the speed of ball
+game_level = 5
+
 
 class PongPaddle(Widget):
 	score = NumericProperty(0)
@@ -16,29 +19,25 @@ class PongPaddle(Widget):
 	def bounce_ball(self, ball):
 
 		 if self.collide_widget(ball):
-		 	ball.velocity_x *= -1
-
-
+		 	ball.velocity_x *= -1 #comment it to run lower code
+# to increase the speed of ball on each collision with paddle uncomment lower line
+			#ball.velocity_x *= -1.1
 
 
 class PongBall(Widget):
 
 	# velocity of the ball on x and y axis
-
     velocity_x = NumericProperty(0)
     velocity_y = NumericProperty(0)
 
     # referencelist property so we can use ball.velocity as
-
     velocity = ReferenceListProperty(velocity_x, velocity_y)
 
     # ``move`` function will move the ball one step. This
-    #  will be called in equal intervals to animate the ball
-   
+    #  will be called in equal intervals to animate the ball   
     def move(self):
-        self.pos = Vector(*self.velocity) + self.pos
+        self.pos = Vector(*self.velocity) + self.pos        
 
-        
 
 class PongGame(Widget): #moving the ball by calling the move() and other objects
 	
@@ -48,14 +47,11 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 
 	def serve_ball(self):
 		self.ball.velocity = Vector(game_level, 0).rotate(randint(0, 360))
-		
 
 	def update(self, dt):
-
 		self.ball.move()
 
 		# bounce off at top/bottom
-
 		if (self.ball.y < 0) or (self.ball.y > self.height - 15):
 			self.ball.velocity_y *= -1
 
@@ -69,19 +65,15 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 			self.ball.velocity_x *= -1
 			self.left_player.score += 1
 
-
 		#idk it works or not, but it's to prevent ball moving along y axis in a straight line loop
-
-		#while self.ball.velocity == Vector(self.center_x, game_level):
+		#if self.ball.velocity == Vector(self.center_x, game_level):
 		#	PongApp().run()
 
+		# scoreboard updation
 		self.left_player.bounce_ball(self.ball)
 		self.right_player.bounce_ball(self.ball)
 
-# on_touch_down()- When our fingers/mouse touches the screen
-# on_touch_up()-	When we lift off fingers from the screen after touching it
 # on_touch_move()-	When we drag our finger on the screen
-
 	def on_touch_move(self, touch):
 
 		if touch.x < self.width / 1/4:
@@ -94,15 +86,14 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 			pass
 
 
-
-class PongApp(App):
+class PongApp(App):	# Building the kivy App
 	def build(self):
 
 		game = PongGame()
 
 		game.serve_ball() 
 
-		Clock.schedule_interval(game.update,1.0/60.0)
+		Clock.schedule_interval(game.update,1.0/60.0) #drawing 60 frames of ball per socond
 
 		return game
 
