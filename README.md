@@ -9,9 +9,7 @@
 
 - My first repository on kivy/python based program.
 
-- First porgram with mouse control rather than keys.
-
-- Capable of running with touchscreen.
+- First porgram with mouse control rather than keys which is capable of running with touchscreen.
 
 # Future Objectives
 
@@ -21,4 +19,4 @@
 
 - Improvement in UI.
 
-It was fun getting started with Kivy.
+It's fun getting started with Kivy.

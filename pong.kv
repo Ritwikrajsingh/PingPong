@@ -14,8 +14,8 @@
 
 <PongGame>:
 	ball: pong_ball
-	player1 : left_player
-	player2 : right_player
+	left_player : left_paddle
+	right_player : right_paddle
 	canvas :
 		Rectangle :
 			pos : self.center_x - 3, 0
@@ -25,24 +25,24 @@
 		font_size : 20
 		center_x : root.width / 4
 		top : root.top - 50
-		text: str(root.player1.score)
+		text: str(root.left_player.score)
 
 	Label:
 		font_size : 20
 		center_x : root.width * 3 / 4
 		top : root.top - 50
-		text: str(root.player2.score)
+		text: str(root.right_player.score)
 
 	PongBall:
 		id: pong_ball
 		center: self.parent.center
 
 	PongPaddle:
-		id : left_player
+		id : left_paddle
 		x : root.x
 		center_y : root.center_y
 
 	PongPaddle:
-		id : right_player
+		id : right_paddle
 		x : root.width - self.width
 		center_y : root.center_y

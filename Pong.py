@@ -4,8 +4,11 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock 
 from random import randint
+from kivy.config import Config
 
-Hardness = 4
+Config.set('kivy','window_icon','icon.png')
+
+game_level = 4
 
 class PongPaddle(Widget):
 	score = NumericProperty(0)
@@ -40,11 +43,11 @@ class PongBall(Widget):
 class PongGame(Widget): #moving the ball by calling the move() and other objects
 	
 	ball = ObjectProperty(None) 
-	player1 = ObjectProperty(None)
-	player2 = ObjectProperty(None)
+	left_player = ObjectProperty(None)
+	right_player = ObjectProperty(None)
 
 	def serve_ball(self):
-		self.ball.velocity = Vector(Hardness, 0).rotate(randint(0, 360))
+		self.ball.velocity = Vector(game_level, 0).rotate(randint(0, 360))
 		
 
 	def update(self, dt):
@@ -59,21 +62,21 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 		# bounce off left
 		if self.ball.x < 0:
 			self.ball.velocity_x *= -1
-			self.player2.score += 1
+			self.right_player.score += 1
 
 		# bounce off right
 		if self.ball.x > self.width - 15:
 			self.ball.velocity_x *= -1
-			self.player1.score += 1
+			self.left_player.score += 1
 
 
 		#idk it works or not, but it's to prevent ball moving along y axis in a straight line loop
 
-		#while self.ball.velocity == Vector(self.center_x, Hardness):
+		#while self.ball.velocity == Vector(self.center_x, game_level):
 		#	PongApp().run()
 
-		self.player1.bounce_ball(self.ball)
-		self.player2.bounce_ball(self.ball)
+		self.left_player.bounce_ball(self.ball)
+		self.right_player.bounce_ball(self.ball)
 
 # on_touch_down()- When our fingers/mouse touches the screen
 # on_touch_up()-	When we lift off fingers from the screen after touching it
@@ -82,10 +85,10 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 	def on_touch_move(self, touch):
 
 		if touch.x < self.width / 1/4:
-			self.player1.center_y = touch.y
+			self.left_player.center_y = touch.y
 
 		if touch.x > self.width * 3/4:
-			self.player2.center_y = touch.y
+			self.right_player.center_y = touch.y
 		
 		else :
 			pass
