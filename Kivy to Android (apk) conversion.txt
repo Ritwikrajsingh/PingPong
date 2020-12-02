@@ -1,0 +1,18 @@
+Steps to convert Kivy to Android APK -
+
+1) Installing Python and Virtual Environment  
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04
+
+2) Install buildozer - https://buildozer.readthedocs.io/en/latest/installation.html#targeting-android
+
+3) Place your files in environment
+
+4) Go to your program's and run "buildozer init"
+
+5) to build package run "buildozer -v android debug"
+
+6) apk will be in your bin directory after compilation
+
+7) Copy this apk file to your phone
+
+8) Run it. ( You need to enable install apk with unknown sources)
