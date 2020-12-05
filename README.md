@@ -2,10 +2,10 @@
 
 *Pong* is my first pyhton program/game based on [Kivy](https://kivy.org). 
 
-> First Theme
+> ![First Theme](https://img.shields.io/badge/release-V0.1-green)
 ![PingPong](pong.png)
 
-> Second Theme
+> ![Second Theme](https://img.shields.io/badge/release-V0.1.1-green)
 ![change in background](pongbg.png)
 
 # My Experience
