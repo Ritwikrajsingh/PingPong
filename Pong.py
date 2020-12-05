@@ -19,7 +19,7 @@ game_level = 5
 bgm = SoundLoader.load('ball_hit.wav')
 miss = SoundLoader.load('miss.wav')
 
-#BgColor
+#BgColor (RGBA)
 Window.clearcolor = (52/255.0, 111/255.0, 207/255.0, 1)
 
 
