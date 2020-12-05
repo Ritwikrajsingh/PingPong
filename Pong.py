@@ -6,6 +6,8 @@ from kivy.clock import Clock
 from random import randint
 from kivy.config import Config
 from kivy.core.audio import SoundLoader
+from kivy.core.window import Window
+from kivy.graphics import Color
 
 #icon
 Config.set('kivy','window_icon','icon.png')
@@ -16,6 +18,9 @@ game_level = 5
 #SFX
 bgm = SoundLoader.load('ball_hit.wav')
 miss = SoundLoader.load('miss.wav')
+
+#BgColor
+Window.clearcolor = (52/255.0, 111/255.0, 207/255.0, 1)
 
 
 
@@ -78,7 +83,7 @@ class PongGame(Widget): #moving the ball by calling the move() and other objects
 		#if self.ball.velocity == Vector(self.center_x, game_level):
 		#	PongApp().run()
 
-		# scoreboard updation
+		# making ball bounce on paddle
 		self.left_player.bounce_ball(self.ball)
 		self.right_player.bounce_ball(self.ball)
 
