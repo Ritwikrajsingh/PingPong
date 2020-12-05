@@ -2,8 +2,11 @@
 
 *Pong* is my first pyhton program/game based on [Kivy](https://kivy.org). 
 
-
+> Before
 ![PingPong](pong.png)
+
+> After
+![change in background](pongbg.png)
 
 # My Experience
 
